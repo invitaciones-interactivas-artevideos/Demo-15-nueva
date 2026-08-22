@@ -2,20 +2,17 @@
    VARIABLES CONFIGURABLES (Edita esto)
 ========================================= */
 :root {
-    /* Paleta de colores (Estilo Dark Rose Gold moderno) */
     --bg-color: #121212;
     --glass-bg: rgba(25, 25, 25, 0.6);
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
-    --accent-color: #e8b4b8; /* Color rosado/dorado */
+    --accent-color: #e8b4b8;
     --accent-hover: #d19a9e;
     
-    /* Tipografías */
     --font-titles: 'Cormorant Garamond', serif;
     --font-text: 'Montserrat', sans-serif;
     
-    /* Tamaños */
     --title-size: 3.5rem;
     --radius: 20px;
 }
@@ -31,7 +28,6 @@
 
 body {
     background-color: var(--bg-color);
-    /* Imagen de fondo opcional oscura */
     background-image: radial-gradient(circle at top right, #2a1a1f, #121212);
     color: var(--text-primary);
     font-family: var(--font-text);
@@ -168,32 +164,28 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   CUENTA REGRESIVA
-========================================= */
-.countdown-container {
-/* =========================================
-   CUENTA REGRESIVA
+   CUENTA REGRESIVA (Ajustada a celulares)
 ========================================= */
 .countdown-container {
     display: flex;
     justify-content: center;
-    gap: 8px; /* Espacio reducido para celulares */
+    gap: 8px;
     width: 100%;
 }
 
 .time-box {
     background: rgba(0,0,0,0.3);
-    padding: 12px 5px; /* Espaciado interno ajustado */
+    padding: 12px 5px;
     border-radius: 12px;
-    min-width: 60px; /* Ancho mínimo reducido */
-    flex: 1; /* Permite que las cajas se adapten solas al ancho */
+    min-width: 60px;
+    flex: 1;
     max-width: 75px;
     border: 1px solid rgba(255,255,255,0.05);
 }
 
 .time-box span {
     font-family: var(--font-titles);
-    font-size: 2.1rem; /* Letra un poco más pequeña para que entren 3 dígitos */
+    font-size: 2.1rem;
     color: var(--accent-color);
     display: block;
     line-height: 1;
@@ -204,7 +196,8 @@ h1, h2, h3 {
     font-size: 0.75rem;
     text-transform: uppercase;
 }
-================
+
+/* =========================================
    GALERÍA (CARRUSEL)
 ========================================= */
 .carousel {
@@ -249,7 +242,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   EXTRAS (GRILLA)
+   EXTRAS
 ========================================= */
 .extras-container {
     display: grid;
@@ -264,7 +257,7 @@ h1, h2, h3 {
 }
 
 /* =========================================
-   LIGHTBOX (IMÁGENES AMPLIADAS)
+   LIGHTBOX
 ========================================= */
 .lightbox {
     position: fixed;
@@ -296,7 +289,6 @@ h1, h2, h3 {
 
 .close-btn:hover { color: var(--accent-color); }
 
-/* Animaciones extras */
 @keyframes floating {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
