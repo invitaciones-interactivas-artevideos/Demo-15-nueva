@@ -1,11 +1,5 @@
-/* =========================================
-   1. CONFIGURACIÓN GENERAL (Edita los true/false y datos aquí)
-========================================= */
 const config = {
-    // Formato de fecha: AAAA-MM-DDTHH:mm:ss
     fechaEvento: "2026-12-15T21:30:00", 
-    
-    // Activar o desactivar módulos (true para mostrar, false para ocultar)
     opciones: {
         musicaAutoplay: true,
         galeriaFotos: true,
@@ -14,26 +8,17 @@ const config = {
         albumCompartido: true,
         instagram: true
     },
-
-    // Enlaces de Google Forms e Instagram
     links: {
         playlist: "https://forms.gle/TU_FORMULARIO_PLAYLIST",
         album: "https://forms.gle/TU_FORMULARIO_ALBUM",
         instagram: "https://instagram.com/tu_usuario"
     },
-
-    // Configuración de la Galería
     galeria: {
-        cantidadFotos: 5 // Generará foto1.jpg, foto2.jpg, hasta foto5.jpg
+        cantidadFotos: 5
     },
-
-    // Datos Bancarios
     datosBancarios: `Banco: Banco República\nTitular: Victoria Apellido\nCuenta: 123456789\nCBU/Alias: mis.15.victoria`
 };
 
-/* =========================================
-   2. INICIALIZACIÓN DE LA INTERFAZ
-========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     aplicarConfiguracion();
     iniciarCuentaRegresiva();
@@ -41,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function aplicarConfiguracion() {
-    // Configurar Extras
     if (config.opciones.playlist) {
         document.getElementById('sec-playlist').classList.remove('hidden-section');
         document.getElementById('link-playlist').href = config.links.playlist;
@@ -54,14 +38,10 @@ function aplicarConfiguracion() {
         document.getElementById('sec-instagram').classList.remove('hidden-section');
         document.getElementById('link-ig').href = config.links.instagram;
     }
-
-    // Configurar Regalos
     if (config.opciones.regalos) {
         document.getElementById('sec-gifts').classList.remove('hidden-section');
         document.getElementById('bank-text').innerText = config.datosBancarios;
     }
-
-    // Configurar Galería
     if (config.opciones.galeriaFotos) {
         document.getElementById('sec-gallery').classList.remove('hidden-section');
         const carousel = document.getElementById('photo-carousel');
@@ -75,34 +55,25 @@ function aplicarConfiguracion() {
     }
 }
 
-/* =========================================
-   3. PORTADA Y MÚSICA
-========================================= */
 const cover = document.getElementById('cover');
 const mainInvitation = document.getElementById('main-invitation');
 const bgMusic = document.getElementById('bg-music');
 
 cover.addEventListener('click', () => {
-    // Ocultar portada
     cover.style.opacity = '0';
     setTimeout(() => {
         cover.style.display = 'none';
         mainInvitation.classList.remove('hidden');
-        // Disparar las animaciones de los elementos ya visibles
         configurarAnimacionesScroll();
     }, 1000);
 
-    // Intentar reproducir música
     if (config.opciones.musicaAutoplay) {
         bgMusic.play().catch(error => {
-            console.log("Autoplay bloqueado por el navegador, requiere interacción previa.", error);
+            console.log("Autoplay bloqueado por el navegador.", error);
         });
     }
 });
 
-/* =========================================
-   4. CUENTA REGRESIVA
-========================================= */
 function iniciarCuentaRegresiva() {
     const fechaDestino = new Date(config.fechaEvento).getTime();
 
@@ -124,9 +95,6 @@ function iniciarCuentaRegresiva() {
     }, 1000);
 }
 
-/* =========================================
-   5. BOTÓN DE REGALOS (Copiar Portapapeles)
-========================================= */
 const btnShowBank = document.getElementById('btn-show-bank');
 const bankDetails = document.getElementById('bank-details');
 const btnCopyBank = document.getElementById('btn-copy-bank');
@@ -145,9 +113,6 @@ btnCopyBank.addEventListener('click', () => {
     });
 });
 
-/* =========================================
-   6. LIGHTBOX PARA IMÁGENES (Con soporte para botón "Atrás")
-========================================= */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const closeLightbox = document.getElementById('close-lightbox');
@@ -155,7 +120,6 @@ const closeLightbox = document.getElementById('close-lightbox');
 function abrirLightbox(src) {
     lightboxImg.src = src;
     lightbox.classList.remove('hidden');
-    // Agregamos un estado al historial del navegador para que funcione el botón "atrás"
     window.history.pushState({ modalOpen: true }, "", "#foto");
 }
 
@@ -165,20 +129,15 @@ function cerrarLightbox() {
 }
 
 closeLightbox.addEventListener('click', () => {
-    // Al tocar la cruz, simulamos ir hacia atrás en el navegador
     window.history.back();
 });
 
-// Detectar cuando el usuario usa el botón de "Atrás" del celular/navegador
 window.addEventListener('popstate', (event) => {
     if (!event.state || !event.state.modalOpen) {
         cerrarLightbox();
     }
 });
 
-/* =========================================
-   7. ANIMACIONES AL HACER SCROLL (Fade In)
-========================================= */
 function configurarAnimacionesScroll() {
     const elementos = document.querySelectorAll('.fade-in');
     const observador = new IntersectionObserver((entradas) => {
