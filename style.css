@@ -1,0 +1,308 @@
+/* =========================================
+   VARIABLES CONFIGURABLES (Edita esto)
+========================================= */
+:root {
+    /* Paleta de colores (Estilo Dark Rose Gold moderno) */
+    --bg-color: #121212;
+    --glass-bg: rgba(25, 25, 25, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-color: #e8b4b8; /* Color rosado/dorado */
+    --accent-hover: #d19a9e;
+    
+    /* Tipografías */
+    --font-titles: 'Cormorant Garamond', serif;
+    --font-text: 'Montserrat', sans-serif;
+    
+    /* Tamaños */
+    --title-size: 3.5rem;
+    --radius: 20px;
+}
+
+/* =========================================
+   ESTILOS GENERALES
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    /* Imagen de fondo opcional oscura */
+    background-image: radial-gradient(circle at top right, #2a1a1f, #121212);
+    color: var(--text-primary);
+    font-family: var(--font-text);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-titles);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.hidden { display: none !important; }
+.hidden-section { display: none !important; }
+
+/* =========================================
+   PORTADA INTERACTIVA
+========================================= */
+.cover {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: linear-gradient(rgba(18,18,18,0.7), rgba(18,18,18,0.9)), url('foto-portada.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    transition: opacity 1s ease-out;
+}
+
+.cover-content {
+    text-align: center;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.cover-title {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.cover-content p {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL Y GLASSMORPHISM
+========================================= */
+#main-invitation {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.glass-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 30px 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.glass-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.glass-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.glass-section p {
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 10px;
+}
+
+.primary-btn {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.primary-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.outline-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.small-btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* =========================================
+   CUENTA REGRESIVA
+========================================= */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.time-box {
+    background: rgba(0,0,0,0.3);
+    padding: 15px 10px;
+    border-radius: 12px;
+    min-width: 70px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.time-box span {
+    font-family: var(--font-titles);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    display: block;
+    line-height: 1;
+}
+
+.time-box p {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   GALERÍA (CARRUSEL)
+========================================= */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 6px;
+}
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+.carousel img {
+    flex: 0 0 80%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    scroll-snap-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+    transform: scale(1.02);
+}
+
+/* =========================================
+   TARJETA BANCARIA
+========================================= */
+.bank-card {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 1px dashed var(--accent-color);
+}
+
+/* =========================================
+   EXTRAS (GRILLA)
+========================================= */
+.extras-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.extra-item i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   LIGHTBOX (IMÁGENES AMPLIADAS)
+========================================= */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover { color: var(--accent-color); }
+
+/* Animaciones extras */
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.pulse {
+    animation: pulse-anim 2s infinite;
+}
+
+@keyframes pulse-anim {
+    0% { box-shadow: 0 0 0 0 rgba(232, 180, 184, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(232, 180, 184, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 180, 184, 0); }
+}
