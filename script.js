@@ -16,7 +16,7 @@ const config = {
     galeria: {
         cantidadFotos: 5
     },
-    datosBancarios: `Banco: Banco República\nTitular: Victoria Apellido\nCuenta: 123456789\nCBU/Alias: mis.15.victoria`
+    datosBancarios: `Banco: Banco República\nTitular: Victoria Apellido\nCuenta: 123456789`
 };
 
 document.addEventListener('DOMContentLoaded', () => {
