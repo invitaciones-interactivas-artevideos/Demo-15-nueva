@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis 15 Años</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Música -->
+    <audio id="bg-music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Portada interactiva -->
+    <div id="cover" class="cover">
+        <div class="cover-content">
+            <h1 class="cover-title">Mis 15 Años</h1>
+            <p>Toca para abrir la invitación</p>
+            <div class="pulse-ring"></div>
+        </div>
+    </div>
+
+    <!-- Contenedor principal de la invitación (Oculto al inicio) -->
+    <div id="main-invitation" class="hidden">
+        
+        <!-- Encabezado -->
+        <header class="glass-section fade-in">
+            <h1 class="main-name">Victoria</h1>
+            <p class="subtitle">¡Te invito a celebrar conmigo esta noche mágica!</p>
+        </header>
+
+        <!-- Cuenta Regresiva -->
+        <section class="glass-section fade-in">
+            <h2>Faltan</h2>
+            <div id="countdown" class="countdown-container">
+                <div class="time-box"><span id="days">00</span><p>Días</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Hs</p></div>
+                <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
+                <div class="time-box"><span id="seconds">00</span><p>Seg</p></div>
+            </div>
+            <h2 id="countdown-finished" class="hidden" style="color: var(--accent-color); margin-top: 20px;">¡Llegó el gran día!</h2>
+        </section>
+
+        <!-- Ubicación -->
+        <section class="glass-section fade-in">
+            <h2><i class="fa-solid fa-location-dot"></i> Dónde y Cuándo</h2>
+            <p class="date-text">Sábado, 15 de Diciembre<br>21:30 Hs</p>
+            <p>Salón "El Palacio Mágico"<br>Av. Principal 1234, Ciudad</p>
+            <a href="https://maps.app.goo.gl/TU_ENLACE_AQUI" target="_blank" class="btn primary-btn">Ver en GPS</a>
+        </section>
+
+        <!-- Dress Code -->
+        <section class="glass-section fade-in">
+            <h2><i class="fa-solid fa-shirt"></i> Dress Code</h2>
+            <p><strong>Elegante</strong></p>
+            <p>Me encantaría que me acompañes con tus mejores galas. (Evitar color blanco).</p>
+        </section>
+
+        <!-- Galería de Fotos (Opcional) -->
+        <section id="sec-gallery" class="glass-section fade-in hidden-section">
+            <h2><i class="fa-solid fa-camera-retro"></i> Mis Fotos</h2>
+            <div class="carousel" id="photo-carousel">
+                <!-- Se llenará con JS -->
+            </div>
+        </section>
+
+        <!-- Regalos (Opcional) -->
+        <section id="sec-gifts" class="glass-section fade-in hidden-section">
+            <h2><i class="fa-solid fa-gift"></i> Regalos</h2>
+            <p>El mejor regalo es tu presencia, pero si deseas ayudarme con mis sueños, puedes hacerlo aquí:</p>
+            <button id="btn-show-bank" class="btn outline-btn">Ver Datos Bancarios</button>
+            <div id="bank-details" class="bank-card hidden">
+                <p id="bank-text">Banco: Banco República<br>Titular: Nombre Apellido<br>Cuenta: 123456789<br>CBU/Alias: mis.15.años</p>
+                <button id="btn-copy-bank" class="btn icon-btn"><i class="fa-regular fa-copy"></i> Copiar Datos</button>
+            </div>
+        </section>
+
+        <!-- Extras (Playlist, Album, Instagram) -->
+        <section class="glass-section fade-in extras-container">
+            <div id="sec-playlist" class="extra-item hidden-section">
+                <i class="fa-solid fa-music"></i>
+                <p>¿Qué canción no puede faltar?</p>
+                <a href="#" target="_blank" id="link-playlist" class="btn small-btn">Sugerir Canción</a>
+            </div>
+            
+            <div id="sec-album" class="extra-item hidden-section">
+                <i class="fa-solid fa-images"></i>
+                <p>Compartí las fotos de la fiesta</p>
+                <a href="#" target="_blank" id="link-album" class="btn small-btn">Subir Fotos</a>
+            </div>
+
+            <div id="sec-instagram" class="extra-item hidden-section">
+                <i class="fa-brands fa-instagram"></i>
+                <p>Usa nuestro hashtag #Mis15Vic</p>
+                <a href="#" target="_blank" id="link-ig" class="btn small-btn">Ir a Instagram</a>
+            </div>
+        </section>
+
+        <!-- Confirmación de Asistencia -->
+        <section class="glass-section fade-in rsvp-section">
+            <h2><i class="fa-solid fa-envelope-open-text"></i> Confirmación</h2>
+            <p>Por favor, confirmá tu asistencia antes del 1 de Diciembre.</p>
+            <a href="https://forms.gle/TU_FORMULARIO_AQUI" target="_blank" class="btn primary-btn pulse">Confirmar Asistencia</a>
+        </section>
+        
+        <!-- Mensaje Final -->
+        <h2 class="fade-in" style="text-align: center; font-size: 3rem; margin: 40px 0 20px 0; letter-spacing: 2px;">¡Te espero!</h2>
+        
+        <br><br>
+    </div>
+
+    <!-- Lightbox para imágenes (ampliar fotos) -->
+    <div id="lightbox" class="lightbox hidden">
+        <span id="close-lightbox" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+        <img id="lightbox-img" src="" alt="Foto ampliada">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
