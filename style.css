@@ -171,22 +171,29 @@ h1, h2, h3 {
    CUENTA REGRESIVA
 ========================================= */
 .countdown-container {
+/* =========================================
+   CUENTA REGRESIVA
+========================================= */
+.countdown-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 8px; /* Espacio reducido para celulares */
+    width: 100%;
 }
 
 .time-box {
     background: rgba(0,0,0,0.3);
-    padding: 15px 10px;
+    padding: 12px 5px; /* Espaciado interno ajustado */
     border-radius: 12px;
-    min-width: 70px;
+    min-width: 60px; /* Ancho mínimo reducido */
+    flex: 1; /* Permite que las cajas se adapten solas al ancho */
+    max-width: 75px;
     border: 1px solid rgba(255,255,255,0.05);
 }
 
 .time-box span {
     font-family: var(--font-titles);
-    font-size: 2.5rem;
+    font-size: 2.1rem; /* Letra un poco más pequeña para que entren 3 dígitos */
     color: var(--accent-color);
     display: block;
     line-height: 1;
@@ -194,11 +201,10 @@ h1, h2, h3 {
 
 .time-box p {
     margin: 5px 0 0 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
 }
-
-/* =========================================
+================
    GALERÍA (CARRUSEL)
 ========================================= */
 .carousel {
